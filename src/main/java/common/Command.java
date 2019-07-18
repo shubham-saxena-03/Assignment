@@ -1,9 +1,8 @@
 package common;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class Command{
 
@@ -19,11 +18,20 @@ public class Command{
 	 * @param Timeout
 	 * @return
 	 */
-	public boolean isWebElementExists(WebDriver driver, WebElement ele, int Timeout) {
+	public boolean isWebElementExists(WebDriver driver, By locator, int Timeout) {
 		try {
-			WebDriverWait wait = new WebDriverWait(driver, Timeout);
-					wait.until(ExpectedConditions.visibilityOf(ele));
-			return ele.isDisplayed();
+			int timeElapsed = 0;
+			WebElement desiredElement = null;
+			while(timeElapsed < Timeout) {
+				timeElapsed += 1;
+				desiredElement = driver.findElement(locator);
+				if(desiredElement.isDisplayed()) {
+					break;
+				}
+			}
+			if(desiredElement!= null) {
+				return desiredElement.isDisplayed();
+			}else {throw new Exception("");}
 		} catch (Exception e) {
 			return false;
 		}

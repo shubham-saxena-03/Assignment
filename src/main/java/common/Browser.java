@@ -10,6 +10,8 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
+import stepDefinitions.Hooks;
+
 public class Browser {
 	
 	public WebDriver driver;
@@ -18,6 +20,7 @@ public class Browser {
 	
 	public Browser() {
 		driver = getDriver();
+		Hooks.driver = driver;
 	}
 	
 	/**

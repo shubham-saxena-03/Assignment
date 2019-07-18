@@ -1,14 +1,15 @@
 package stepDefinitions;
 
-import common.Browser;
-import cucumber.api.Scenario;
+import org.openqa.selenium.WebDriver;
+
 import cucumber.api.java.After;
 
-public class Hooks extends Browser{
+public class Hooks{
+	public static WebDriver driver;
 	
 	
 	@After
-	public void AfterSteps(Scenario scenario) {
+	public void AfterSteps() {
 		driver.close();
 		driver.quit();
 	}

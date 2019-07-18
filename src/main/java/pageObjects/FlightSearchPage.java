@@ -52,8 +52,8 @@ public class FlightSearchPage {
 		return driver.findElement(By.xpath("//button[@type='submit']"));
 	}
 	
-	private WebElement Row_FlightSearchResult() {
-		return driver.findElement(By.xpath("//div[@class='ts-fbr-flight-list-row__header-core']"));
+	private By Locator_Row_FlightSearchResult() {
+		return By.xpath("//div[@class='ts-fbr-flight-list-row__header-core']");
 	}
 	
 	/* End Region WebElements Locators */
@@ -132,7 +132,7 @@ public class FlightSearchPage {
 	public void initializeSeach() throws Exception {
 		try {
 			Button_Submit().click();
-			command.isWebElementExists(driver, Row_FlightSearchResult(), 60);
+			command.isWebElementExists(driver, Locator_Row_FlightSearchResult(), 60);
 		}catch(Exception e) {
 			throw new Exception("Unable to initialize the Flight Search"+e.getMessage());
 		}
